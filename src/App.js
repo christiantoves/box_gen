@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import {useState} from 'react';
+import Form from './components/Form';
+import Results from './components/Results';
 import './App.css';
 
+
 function App() {
+  const [loggedBox, setLoggedBox] = useState([])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form setLoggedBox = {setLoggedBox} loggedBox = {loggedBox} />
+      {
+      loggedBox.map((box, i) => <Results key = {i} box = {box}/>)
+      }
     </div>
   );
 }
+
 
 export default App;
